@@ -125,11 +125,17 @@ document.getElementById('save-id').addEventListener('click', function () {
 
 
     let savingAmount = document.getElementById('saving-amount');
-    savingAmount.innerText = parseFloat(newIncome * (totalSave / 100));
+    let save = parseFloat(newIncome * (totalSave / 100));
     
-    if (savingAmount.innerText > remainBalance.innerText) {
-        savingAmount.innerText = 0;
-        alert('Your desired savings is higher than your remaining balance');        
+    
+    if (save > remainBalance.innerText) {        
+        alert('Your desired savings is higher than your remaining balance'); 
+        savingAmount.innerText = 0;  
+          
+    }
+
+    else {
+        savingAmount.innerText = save;
     }
 
     let lastBalance = document.getElementById('last-balance');
@@ -137,8 +143,8 @@ document.getElementById('save-id').addEventListener('click', function () {
 
     if (lastBalance.innerText < 0) {
         lastBalance.innerText = 0;
-        alert('No remaining balance');
-        return false;
+        /* alert('No remaining balance');
+        return false; */
     }
 
 })
