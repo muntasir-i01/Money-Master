@@ -1,3 +1,4 @@
+//CALCULATION button handler
 document.getElementById('calculation').addEventListener('click', function () {
     const income = document.getElementById('monthly-income');
     const newIncomeText = income.value;
@@ -7,7 +8,7 @@ document.getElementById('calculation').addEventListener('click', function () {
         alert("Monthly income is an invalid number");
         return false;
     }
-   
+
     const foodExpenses = document.getElementById('food-id');
     const foodKhorochText = foodExpenses.value;
     let foodKhoroch = parseFloat(foodKhorochText);
@@ -34,18 +35,28 @@ document.getElementById('calculation').addEventListener('click', function () {
         return false;
     }
 
- let totalExpense = document.getElementById('total-expense');
- let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
- totalExpense.innerText = khoroch;
+    let totalExpense = document.getElementById('total-expense');
+    let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
+
+    if (khoroch < newIncome) {
+        totalExpense.innerText = khoroch;
+    }
+
+    else {
+        alert('Your Expense is Greater than Your Income');
+        return false;
+    }
+
+    let remainBalance = document.getElementById('remainig-balance');
+    let balance = newIncome - totalExpense.innerText;
+    remainBalance.innerText = balance;
+
+})
 
 
- let remainBalance = document.getElementById('remainig-balance');
-  let balance = newIncome - totalExpense.innerText;
-  remainBalance.innerText = balance;
 
-}) 
-
-document.getElementById('save-id').addEventListener('click', function(){
+//SAVE button handler
+document.getElementById('save-id').addEventListener('click', function () {
 
     const income = document.getElementById('monthly-income');
     const newIncomeText = income.value;
@@ -82,15 +93,15 @@ document.getElementById('save-id').addEventListener('click', function(){
         return false;
     }
 
- let totalExpense = document.getElementById('total-expense');
- let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
- totalExpense.innerText = khoroch;
+    let totalExpense = document.getElementById('total-expense');
+    let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
+    totalExpense.innerText = khoroch;
 
 
- let remainBalance = document.getElementById('remainig-balance');
-  let balance = newIncome - totalExpense.innerText;
-  remainBalance.innerText = balance;
-   
+    let remainBalance = document.getElementById('remainig-balance');
+    let balance = newIncome - totalExpense.innerText;
+    remainBalance.innerText = balance;
+
     const saveInput = document.getElementById('save-input');
     const saveInputText = saveInput.value;
     const totalSave = parseFloat(saveInputText);
@@ -99,17 +110,19 @@ document.getElementById('save-id').addEventListener('click', function(){
         return false;
     }
 
-    let savingAmount = document.getElementById('saving-amount'); 
+
+    let savingAmount = document.getElementById('saving-amount');
     savingAmount.innerText = newIncome * (totalSave / 100);
- 
 
-  let lastBalance = document.getElementById('last-balance');
-  if(totalExpense.innerText > newIncome) {
-      lastBalance.innerText = '0';
-  }
+    let lastBalance = document.getElementById('last-balance');
 
-  else {
-  lastBalance.innerText = remainBalance.innerText - savingAmount.innerText;
-  }
+    if (lastBalance.innerText <= remainBalance) {
+        lastBalance.innerText = '0';
+        // alert("Remaining Balance 0");      
+    }
+
+    else {
+        lastBalance.innerText = remainBalance.innerText - savingAmount.innerText;
+    }
 
 })
