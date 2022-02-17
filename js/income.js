@@ -1,3 +1,4 @@
+
 //CALCULATION button handler
 document.getElementById('calculation').addEventListener('click', function () {
     const income = document.getElementById('monthly-income');
@@ -36,6 +37,11 @@ document.getElementById('calculation').addEventListener('click', function () {
     }
 
     let totalExpense = document.getElementById('total-expense');
+    
+    if (foodKhoroch < 0 || rentKhoroch < 0 || clothesKhoroch < 0) {
+        alert('Negative Input Detected');
+        return false;
+    }
     let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
 
     if (khoroch < newIncome) {
@@ -79,21 +85,26 @@ document.getElementById('save-id').addEventListener('click', function () {
     const rentExpenses = document.getElementById('rent-id');
     const rentKhorochText = rentExpenses.value;
     const rentKhoroch = parseFloat(rentKhorochText);
-
+   
     if (isNaN(rentKhoroch)) {
-        alert("Amount for rent expense is an invalid number");
+        alert("Amount for rent expense is an invalid neagt number");
         return false;
     }
 
     const clothesExpenses = document.getElementById('clothes-id');
     const clothesKhorochText = clothesExpenses.value;
     const clothesKhoroch = parseFloat(clothesKhorochText);
+
     if (isNaN(clothesKhoroch)) {
         alert("Amount for clothes expense is an invalid number");
         return false;
     }
 
     let totalExpense = document.getElementById('total-expense');
+    if (foodKhoroch < 0 || rentKhoroch < 0 || clothesKhoroch < 0) {
+        alert('Negative Input Detected');
+        return false;
+    }
     let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
     totalExpense.innerText = khoroch;
 
@@ -112,17 +123,14 @@ document.getElementById('save-id').addEventListener('click', function () {
 
 
     let savingAmount = document.getElementById('saving-amount');
+    
     savingAmount.innerText = newIncome * (totalSave / 100);
+    if (savingAmount.innerText < 0) {
+        alert('Negative Savings Input');
+        return false;
+    }
 
     let lastBalance = document.getElementById('last-balance');
-
-    if (lastBalance.innerText <= remainBalance) {
-        lastBalance.innerText = '0';
-        // alert("Remaining Balance 0");      
-    }
-
-    else {
-        lastBalance.innerText = remainBalance.innerText - savingAmount.innerText;
-    }
-
+    lastBalance.innerText = remainBalance.innerText - savingAmount.innerText;
+   
 })
