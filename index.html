@@ -21,32 +21,32 @@
         </section>
 
         <!-- js section -->
-        <section class="grid justify-center bg-slate-50">
-            <div class="m-4 text-center text-center font-semibold">
-                <h4 class="text-xl m-4">Income</h4>
-                <label for="lIncome" class="font-medium">Income:</label>
-                <input id="monthly-income" type="text" name="" class="bg-slate-300 p-1 w-3/6">
+        <section class="grid justify-items-center bg-slate-50">
+            <!-- input income div -->
+            <h4 class="text-xl text-center mt-3 font-semibold">Income</h4>
+            <div class="font-semibold">
+                <label for="lIncome" class="font-medium mx-2">Income:</label>
+                <input id="monthly-income" type="text" name="" class="bg-slate-300 p-1 w-fit">
             </div>
 
-            <div class="mb-4">
-                <h4 class="text-xl m-4 text-center font-semibold">Expenses</h4>
+            <!-- Expenses -> Food, Rent & Clothes, Calculation, Total Expense & Balance div -->
+            <div>
+                <h4 class="text-xl m-4 text-center font-semibold mt-0">Expenses</h4>
 
-                <div class="text-center flex flex-col">
-
-
+                <div class="grid justify-items-center">
                     <div class="m-4">
-                        <label for="lFood" class="font-medium">Food:</label>
+                        <label for="lFood" class="font-medium mx-4">Food:</label>
                         <input id="food-id" type="text" name="" class="bg-slate-300 p-1 w-fit">
                     </div>
 
 
                     <div class="m-4">
-                        <label for="lRent" class="font-medium">Rent:</label>
+                        <label for="lRent" class="font-medium mx-4">Rent:</label>
                         <input id="rent-id" type="text" name="" class="bg-slate-300 p-1 w-fit">
                     </div>
 
                     <div class="m-4">
-                        <label for="lClothes" class="font-medium">Clothes:</label>
+                        <label for="lClothes" class="font-medium mx-2">Clothes:</label>
                         <input id="clothes-id" type="text" name="" class="bg-slate-300 p-1 w-fit">
                     </div>
 
@@ -56,14 +56,14 @@
                             class="mt-3 rounded bg-sky-400 px-8 py-1 text-rose-50 font-semibold w-fit">Calculate</button>
                     </div>
 
-                    <div class="m-4 mt-6">
-                        <label for="tExpense" class="text-xl font-semibold">Total Expenses: <span
+                    <div class="m-4">
+                        <label for="tExpense" class="text-xl font-semibold mx-2">Total Expenses: <span
                                 id="total-expense"></span></label>
                         <input class="bg-slate-50 font-semibold" type="text" name="">
                     </div>
 
-                    <div class="m-4">
-                        <label for="lBalance" class="text-xl font-semibold">Balance: <span
+                    <div>
+                        <label for="lBalance" class="text-xl font-semibold mx-2">Balance: <span
                                 id="remainig-balance"></span></label>
                         <input class="bg-slate-50 font-semibold" type="text" name="">
                     </div>
@@ -71,28 +71,30 @@
 
             </div>
 
-
-            <div class="m-4 text-center">
-                <label for="lSave" class="font-medium">Save:</label>
+            <!-- Saving Percentage Input -->
+            <div class="m-4 mt-0 text-center">
+                <label for="lSave" class="font-medium mx-2">Save:</label>
                 <input id="save-input" type="text" name="" class="bg-slate-300 p-1 inline-block w-3/6">
                 <span class="mx-2"> % </span>
                 <button id="save-id" class="mt-3 rounded bg-sky-400 px-5 py-1 text-rose-50 font-semibold">Save</button>
             </div>
-
-            <div class="m-4 mt-9 text-center">
-                <label for="lSavingAmount" class="text-xl font-semibold">Saving Amount: <span
+            <!-- Saving Amount -->
+            <div class="flex justify-center">
+                <label for="lSavingAmount" class="text-xl font-semibold mx-2">Saving Amount: <span
                         id="saving-amount"></span></label>
                 <input class="bg-slate-50 font-semibold" type="text" name="">
             </div>
 
-            <div class="m-4 text-center">
-                <label for="lRemainingBalance" class="text-xl font-semibold">Remaining Balance: <span
+            <!-- Remaining Balance -->
+            <div class="flex justify-center">
+                <label for="lRemainingBalance" class="text-xl font-semibold mx-2">Remaining Balance: <span
                         id="last-balance"></span></label>
                 <input class="bg-slate-50 font-semibold" type="text" name="">
             </div>
         </section>
     </main>
+
+    <!-- javaScript file location -->
     <script src="js/income.js"></script>
 </body>
-
 </html>
