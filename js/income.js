@@ -43,7 +43,7 @@ document.getElementById('calculation').addEventListener('click', function () {
     }
 
     let totalExpense = document.getElementById('total-expense');
-    let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
+    let khoroch = parseFloat(foodKhoroch + rentKhoroch + clothesKhoroch);
 
     if (khoroch < newIncome) {
         totalExpense.innerText = khoroch;
@@ -55,8 +55,7 @@ document.getElementById('calculation').addEventListener('click', function () {
     }
 
     let remainBalance = document.getElementById('remainig-balance');
-    let balance = newIncome - totalExpense.innerText;
-    remainBalance.innerText = balance;
+    remainBalance.innerText = parseFloat(newIncome - totalExpense.innerText);    
 
 })
 
@@ -106,13 +105,13 @@ document.getElementById('save-id').addEventListener('click', function () {
     }
 
     let totalExpense = document.getElementById('total-expense');
-    let khoroch = foodKhoroch + rentKhoroch + clothesKhoroch;
+    let khoroch = parseFloat(foodKhoroch + rentKhoroch + clothesKhoroch);
     totalExpense.innerText = khoroch;
 
 
-    let remainBalance = document.getElementById('remainig-balance');
-    let balance = newIncome - totalExpense.innerText;
-    remainBalance.innerText = balance;
+    let remainBalance = document.getElementById('remainig-balance');    
+    remainBalance.innerText = parseFloat(newIncome - totalExpense.innerText);
+    
 
     const saveInput = document.getElementById('save-input');
     const saveInputText = saveInput.value;
@@ -126,17 +125,15 @@ document.getElementById('save-id').addEventListener('click', function () {
 
 
     let savingAmount = document.getElementById('saving-amount');
-    savingAmount.innerText = newIncome * (totalSave / 100);
-
-    if (savingAmount.innerText < 0) {
-        savingAmount.value = '';
-        alert('Negative Savings Input');
-        return false;
+    savingAmount.innerText = parseFloat(newIncome * (totalSave / 100));
+    
+    if (savingAmount.innerText > remainBalance.innerText) {
+        savingAmount.innerText = 0;
+        alert('Your desired savings is higher than your remaining balance');        
     }
 
-
     let lastBalance = document.getElementById('last-balance');
-    lastBalance.innerText = remainBalance.innerText - savingAmount.innerText;
+    lastBalance.innerText = parseFloat(remainBalance.innerText - savingAmount.innerText);
 
     if (lastBalance.innerText < 0) {
         lastBalance.innerText = 0;
