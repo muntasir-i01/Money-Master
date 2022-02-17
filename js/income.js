@@ -11,7 +11,7 @@ document.getElementById('calculation').addEventListener('click', function () {
 
     const foodExpenses = document.getElementById('food-id');
     const foodKhorochText = foodExpenses.value;
-    let foodKhoroch = parseFloat(foodKhorochText);
+    const foodKhoroch = parseFloat(foodKhorochText);
 
     if (isNaN(foodKhoroch)) {
         alert("Amount for food expense is an invalid number");
